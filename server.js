@@ -15,9 +15,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
-
-// Crear las distintas capas
-
 const librosMem = new LibrosMem();
 
 const librosServicio =
@@ -29,14 +26,10 @@ const librosControlador =
 const librosRouter =
     new LibrosRouter(librosControlador);
 
-
-// Asociar las rutas
-
 app.use(
     "/libros",
     librosRouter.obtenerRouter()
 );
-
 
 app.listen(PORT, () => {
     console.log(
